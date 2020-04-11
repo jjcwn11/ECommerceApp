@@ -22,9 +22,9 @@ namespace Infrastructure.Data
             throw new System.NotImplementedException();
         }
 
-        public Task<int> CountAsync(ISpecification<T> spec)
+        public async Task<int> CountAsync(ISpecification<T> spec)
         {
-            throw new System.NotImplementedException();
+           return await ApplySpecification(spec).CountAsync();
         }
 
         public void Delete(T entity)
