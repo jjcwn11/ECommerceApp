@@ -2,7 +2,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/c
 import { Observable, throwError } from 'rxjs';
 import { Router, NavigationExtras } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/operators';
+import { catchError, delay } from 'rxjs/operators';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -10,6 +10,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(req).pipe(
+          
             catchError(error => {
                 if (error) {
                     if (error) {
@@ -18,7 +19,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                                 throw error.error;
                             } else {
                                  throw error.error;
-                                //this.toastr.error(error.error.message, error.error.statusCode);
+                                // this.toastr.error(error.error.message, error.error.statusCode);
                             }
                         }
                     }
