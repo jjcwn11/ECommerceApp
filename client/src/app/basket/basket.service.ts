@@ -23,7 +23,6 @@ export class BasketService {
       .pipe(
         map((basket: IBasket) => {
           this.basketSource.next(basket);
-          console.log(this.getCurrentBasketValue);
           this.calculateTotals();
         })
       );
@@ -32,6 +31,7 @@ export class BasketService {
   setBasket(basket: IBasket) {
     return this.http.post(this.baseUrl + 'basket', basket).subscribe((response: IBasket) => {
       this.basketSource.next(response);
+      // console.log('Inside of Set basket');
       this.calculateTotals();
     }, error => {
       console.log(error);
@@ -44,9 +44,7 @@ export class BasketService {
 
   addItemToBasket(item: IProduct, quantity = 1) {
     const itemToAdd: IBasketItem = this.mapProductItemToBasketItem(item, quantity);
-    let basket = this.getCurrentBasketValue();
-    console.log('inside basket');
-    console.log(basket);
+    let basket = this.getCurrentBasketValue();  
     if (basket === null) {
       basket = this.createBasket();
     }
@@ -114,9 +112,7 @@ export class BasketService {
   }
 
   private createBasket(): IBasket {
-    console.log('inside CREATE basket');
-    const basket = new Basket();
-    console.log('about to create basket. basket id=' + basket.id);    
+    const basket = new Basket();  
     localStorage.setItem('basket_id', basket.id);
     return basket;
   }

@@ -18,7 +18,7 @@ import { BasketService } from './basket/basket.service';
     if (basketId) {
       this.basketService.getBasket(basketId).subscribe(() =>
       {
-        console.log('init Basket');
+       
       }, error => {
            console.log(error);
       });

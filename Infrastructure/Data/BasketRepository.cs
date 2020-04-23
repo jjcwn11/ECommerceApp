@@ -24,6 +24,8 @@ namespace Infrastructure.Data
         {
             var data = await _database.StringGetAsync(basketId);
 
+            Console.Write("Inside Get Basket Async");
+
             return data.IsNullOrEmpty ? null : JsonSerializer.Deserialize<CustomerBasket>(data);
         }
 
