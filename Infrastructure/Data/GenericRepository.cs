@@ -19,7 +19,17 @@ namespace Infrastructure.Data
 
         public void Add(T entity)
         {
-            throw new System.NotImplementedException();
+            _context.Set<T>().Add(entity);
+        }
+          public void Update(T entity)
+        {
+             _context.Set<T>().Attach(entity);
+             _context.Entry(entity).State = EntityState.Modified;
+        }
+        
+        public void Delete(T entity)
+        {
+             _context.Set<T>().Remove(entity);
         }
 
         public async Task<int> CountAsync(ISpecification<T> spec)
@@ -27,10 +37,6 @@ namespace Infrastructure.Data
            return await ApplySpecification(spec).CountAsync();
         }
 
-        public void Delete(T entity)
-        {
-            throw new System.NotImplementedException();
-        }
 
         public async Task<T> GetByIdAsync(int id)
         {
@@ -53,10 +59,7 @@ namespace Infrastructure.Data
             return await ApplySpecification(spec).ToListAsync();
         }
 
-        public void Update(T entity)
-        {
-            throw new System.NotImplementedException();
-        }
+      
 
         private IQueryable<T> ApplySpecification(ISpecification<T> spec)
         {

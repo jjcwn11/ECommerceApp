@@ -5,6 +5,7 @@ using AutoMapper;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Infrastructure.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -38,7 +39,7 @@ namespace API
             services.AddDbContext<AppIdentityDbContext>(x => 
             {
                 x.UseSqlite(_config.GetConnectionString("IdentityConnection"));
-            });
+            });               
            
 
            services.AddSingleton<IConnectionMultiplexer>(c => {
@@ -73,14 +74,14 @@ namespace API
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseStatusCodePagesWithReExecute("/errors/{0}"); // redirect to errors controller
 
+            app.UseCors("CorsPolicy");     
             app.UseHttpsRedirection();
             app.UseRouting();
-            app.UseStaticFiles();
-            app.UseCors("CorsPolicy");
-
             app.UseAuthentication();
+            app.UseAuthorization(); 
 
-            app.UseAuthorization();
+            app.UseStaticFiles();      
+            
             app.UseSwagger();
             app.UseSwaggerUI(c => {c.SwaggerEndpoint("/swagger/v1/swagger.json", "SkiNet Api v1:");});
 
