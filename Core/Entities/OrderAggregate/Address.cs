@@ -1,3 +1,6 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace Core.Entities.OrderAggregate
 {
     public class Address
@@ -6,8 +9,9 @@ namespace Core.Entities.OrderAggregate
         {
         }
 
-        public Address(string firstName, string lastName, string street, string city, string state, string zipcode)
+        public Address( string firstName, string lastName, string street, string city, string state, string zipcode)
         {
+          //  Id = id;
             FirstName = firstName;
             LastName = lastName;
             Street = street;
@@ -15,6 +19,13 @@ namespace Core.Entities.OrderAggregate
             State = state;
             Zipcode = zipcode;
         }
+         //public int Id { get; set; }
+
+        //  private Guid _id;      
+
+
+        // [Key]
+        // public string Id { get; set; }
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -23,4 +34,4 @@ namespace Core.Entities.OrderAggregate
         public string State { get; set; }
         public string Zipcode { get; set; }
     }
-}
+} 

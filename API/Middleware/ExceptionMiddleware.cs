@@ -25,7 +25,9 @@ namespace API.Middleware
         {
             try
             {
+                Console.Write("INside INVOKE ASYNC");
                 await _next(context);
+                  Console.Write("After INVOKE ASYNC");
             }
             catch (Exception ex)
             {

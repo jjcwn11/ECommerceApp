@@ -64,7 +64,7 @@ namespace Infrastructure.Data
                     await context.SaveChangesAsync();
                 }
                 
-                 if (!context.DeliveryMethods.Any())
+                 if (!context.Products.Any())
                 {
                     var productsData =
                         File.ReadAllText(path + @"/Data/SeedData/products.json");
