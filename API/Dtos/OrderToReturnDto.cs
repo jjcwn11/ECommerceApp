@@ -17,4 +17,4 @@ namespace API.Dtos
         public decimal Total { get; set; }
         public string Status { get; set; }
     }
-}
+} 

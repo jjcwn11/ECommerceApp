@@ -43,6 +43,7 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<OrderDto>>> GetOrdersForUser()
         {
             Console.Write("Inside Orders for User");
+           
             var email = HttpContext.User.RetrieveEmailFromPrincipal();
 
             var orders = await _orderService.GetOrdersForUserAsync(email);

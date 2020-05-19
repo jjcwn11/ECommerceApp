@@ -14,7 +14,9 @@ namespace Core.Entities.OrderAggregate
         {
             BuyerEmail = buyerEmail;
             ShipToAddress = shipToAddress;
+             Console.Write("incoming delivery method = " + deliveryMethod);
             DeliveryMethod = deliveryMethod;
+           
             OrderItems = orderItems;
             Subtotal = subtotal;
         }
@@ -28,9 +30,14 @@ namespace Core.Entities.OrderAggregate
         public OrderStatus Status { get; set; } = OrderStatus.Pending;
         public string PaymentIntentId { get; set; }
 
-        public decimal GetTotal()
-        {
-            return Subtotal + DeliveryMethod.Price;
-        }
+       public decimal GetTotal()
+       {
+           Console.Write("Sub Total = " + Subtotal);
+          // Console.Write("Deliver Price = " + DeliveryMethod.Price);
+
+           return 500;
+
+          // return Subtotal + DeliveryMethod.Price;
+       }
     }
 }
