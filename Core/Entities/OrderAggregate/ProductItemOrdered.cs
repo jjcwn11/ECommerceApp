@@ -7,10 +7,7 @@ namespace Core.Entities.OrderAggregate
         }
 
         public ProductItemOrdered( int productItemId, string productName, string pictureUrl)
-        {
-
-           System.Console.Write("Inside ProductItem Ordered");
-          
+        {     
             productItemId = ProductItemId;
             ProductName = productName;
             PictureUrl = pictureUrl;
