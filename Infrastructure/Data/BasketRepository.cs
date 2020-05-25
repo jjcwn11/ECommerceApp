@@ -24,7 +24,11 @@ namespace Infrastructure.Data
         {
             var data = await _database.StringGetAsync(basketId);
 
-          //  Console.Write("Inside Get Basket Async");
+           // Console.Write("Inside Get Basket Async FIRST = " + basketId + " AFTER BASKET ID");
+
+           // Console.Write("Inside Get Basket Async SECOND = " + data + " AFTER SECOND ");
+
+           // Console.Write("Inside Get Basket Async THIRD = " + (data.IsNullOrEmpty ? null : JsonSerializer.Deserialize<CustomerBasket>(data))  + " AFTER THIRD ");
 
             return data.IsNullOrEmpty ? null : JsonSerializer.Deserialize<CustomerBasket>(data);
         }

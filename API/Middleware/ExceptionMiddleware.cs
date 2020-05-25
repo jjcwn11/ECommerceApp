@@ -24,11 +24,10 @@ namespace API.Middleware
         public async Task InvokeAsync(HttpContext context)
         {
             try
-            {
-                Console.Write("INside INVOKE ASYNC");
-                await _next(context);
-                  Console.Write("After INVOKE ASYNC");
+            {             
+                await _next(context);                
             }
+            
             catch (Exception ex)
             {
                 _logger.LogError(ex, ex.Message);

@@ -37,12 +37,10 @@ export class AccountService {
   }
 
   login(values: any) {
-    console.log(' Inside Login = ' + this.baseUrl );
-    console.log(' Values = '  +  values );
-    return this.http.post(this.baseUrl + 'account/login', values).pipe(
+        return this.http.post(this.baseUrl + 'account/login', values).pipe(
       map((user: IUser) => {
         if (user) {
-          console.log('inside If User');
+       
           localStorage.setItem('token', user.token);
           this.currentUserSource.next(user);
         }

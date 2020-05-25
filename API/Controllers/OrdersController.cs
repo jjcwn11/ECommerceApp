@@ -32,6 +32,9 @@ namespace API.Controllers
 
             var address = _mapper.Map<AddressDto, Address>(orderDto.ShipToAddress);
 
+           // Console.Write("The Controller delivery ID = " + +orderDto.DeliveryMethodId);
+           //  Console.Write("The Controller Ship to address = " + orderDto.ShipToAddress);
+
             var order = await _orderService.CreateOrderAsync(email, orderDto.DeliveryMethodId, orderDto.BasketId, address);
 
             if (order == null) return BadRequest(new ApiResponse(400, "Problem creating order"));
@@ -42,7 +45,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<OrderDto>>> GetOrdersForUser()
         {
-            Console.Write("Inside Orders for User");
+          //  Console.Write("Inside Orders for User");
            
             var email = HttpContext.User.RetrieveEmailFromPrincipal();
 
@@ -55,7 +58,7 @@ namespace API.Controllers
         public async Task<ActionResult<OrderToReturnDto>> GetOrderByIdForUser(int id)
         {
 
-            Console.Write("Inside Orders BY ID for User");
+          //  Console.Write("Inside Orders BY ID for User");
             var email = HttpContext.User.RetrieveEmailFromPrincipal();
 
             var order = await _orderService.GetOrderByIdAsync(id, email);

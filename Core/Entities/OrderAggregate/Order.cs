@@ -14,7 +14,7 @@ namespace Core.Entities.OrderAggregate
         {
             BuyerEmail = buyerEmail;
             ShipToAddress = shipToAddress;
-             Console.Write("incoming delivery method = " + deliveryMethod);
+            // Console.Write("incoming delivery method = " + deliveryMethod);
             DeliveryMethod = deliveryMethod;
            
             OrderItems = orderItems;
@@ -32,12 +32,12 @@ namespace Core.Entities.OrderAggregate
 
        public decimal GetTotal()
        {
-           Console.Write("Sub Total = " + Subtotal);
+          // Console.Write("Sub Total . about to return 500, how is this called = " + Subtotal);
           // Console.Write("Deliver Price = " + DeliveryMethod.Price);
 
            return 500;
 
-          // return Subtotal + DeliveryMethod.Price;
+           //return Subtotal + DeliveryMethod.Price;
        }
     }
 }

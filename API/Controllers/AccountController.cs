@@ -81,7 +81,7 @@ namespace API.Controllers
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
 
-            Console.Write("Inside account login");
+          //  Console.Write("Inside account login");
             var user = await _userManager.FindByEmailAsync(loginDto.Email);
 
             if (user == null) return Unauthorized(new ApiResponse(401));
@@ -101,7 +101,7 @@ namespace API.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
-            Console.Write("Inside account controller");
+         //   Console.Write("Inside account controller");
 
              if (CheckEmailExistsAsync(registerDto.Email).Result.Value)
             {

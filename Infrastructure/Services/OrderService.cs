@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -34,7 +35,11 @@ namespace Infrastructure.Services
             }
 
             // get delivery method from repo
+           // Console.Write("The ID is = " + deliveryMethodId);      
+
             var deliveryMethod = await _unitOfWork.Repository<DeliveryMethod>().GetByIdAsync(deliveryMethodId);
+
+           //  Console.Write("The Method is = " + deliveryMethod);
 
             // calc subtotal
             var subtotal = items.Sum(item => item.Price * item.Quantity);

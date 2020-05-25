@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using API.Dtos;
 using AutoMapper;
@@ -29,10 +30,12 @@ namespace API.Controllers
          public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasketDto basket)
         {
             var customerBasket = _mapper.Map<CustomerBasketDto, CustomerBasket>(basket);
+           // Console.Write(customerBasket);
 
             var updatedBasket = await _basketRepository.UpdateBasketAsync(customerBasket);
 
             return Ok(updatedBasket);
+          
         }
 
         [HttpDelete]
