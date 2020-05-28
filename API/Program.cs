@@ -21,7 +21,7 @@ namespace API
             {
                 var services = scope.ServiceProvider;
                 var loggerFactory = services.GetRequiredService<ILoggerFactory>();
-                try
+                try 
                 {
                     var context = services.GetRequiredService<StoreContext>();
                     await context.Database.MigrateAsync();
@@ -32,17 +32,14 @@ namespace API
                     await identityContext.Database.MigrateAsync();
                     await AppIdentityDbContextSeed.SeedUsersAsync(userManager);
                 }
-
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                        var logger = loggerFactory.CreateLogger<Program>();
-                        logger.LogError(ex,"An Error Occurred during Migration");
+                    var logger = loggerFactory.CreateLogger<Program>();
+                    logger.LogError(ex, "An error occured during migration");
                 }
-
             }
-            host.Run();
 
-    
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

@@ -9,16 +9,14 @@ namespace Core.Entities.OrderAggregate
         {
         }
 
-        public Order(IReadOnlyList<OrderItem> orderItems, string buyerEmail, Address shipToAddress, 
-        DeliveryMethod deliveryMethod, decimal subtotal)
+        public Order(IReadOnlyList<OrderItem> orderItems, string buyerEmail, Address shipToAddress, DeliveryMethod deliveryMethod, decimal subtotal, string paymentIntentId)
         {
             BuyerEmail = buyerEmail;
             ShipToAddress = shipToAddress;
-            // Console.Write("incoming delivery method = " + deliveryMethod);
             DeliveryMethod = deliveryMethod;
-           
             OrderItems = orderItems;
             Subtotal = subtotal;
+            PaymentIntentId = paymentIntentId;
         }
 
         public string BuyerEmail { get; set; }
@@ -30,14 +28,10 @@ namespace Core.Entities.OrderAggregate
         public OrderStatus Status { get; set; } = OrderStatus.Pending;
         public string PaymentIntentId { get; set; }
 
-       public decimal GetTotal()
-       {
-          // Console.Write("Sub Total . about to return 500, how is this called = " + Subtotal);
-          // Console.Write("Deliver Price = " + DeliveryMethod.Price);
-
-           return 500;
-
-           //return Subtotal + DeliveryMethod.Price;
-       }
+        public decimal GetTotal()
+        {
+            return 500;
+            //return Subtotal + DeliveryMethod.Price;
+        }
     }
 }

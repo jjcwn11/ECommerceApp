@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Threading.Tasks;
 using Core;
-using Core.Entities;
 using Core.Interfaces;
 
 namespace Infrastructure.Data
