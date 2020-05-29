@@ -1,5 +1,6 @@
 using System.Linq;
 using Core;
+using Core.Entities;
 using Core.Specifications;
 using Microsoft.EntityFrameworkCore;
 
