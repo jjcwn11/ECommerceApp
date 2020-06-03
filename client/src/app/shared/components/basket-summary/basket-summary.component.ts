@@ -5,7 +5,7 @@ import { IBasket, IBasketItem } from '../../models/basket';
 import { IOrderItem } from '../../models/order';
 
 @Component({
-  selector: 'app-basket-summay',
+  selector: 'app-basket-summary',
   templateUrl: './basket-summary.component.html',
   styleUrls: ['./basket-summary.component.scss']
 })
@@ -20,10 +20,6 @@ export class BasketSummaryComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('IsBasket = ' + this.isBasket);
-    console.log('IsBasket = ' + this.isOrder);
-    console.log('Either or = ' + this.isBasket || this.isOrder);
-    console.log('items = ' + this.items);
   }
 
   decrementItemQuantity(item: IBasketItem) {
